@@ -70,7 +70,8 @@ reg [DATA_WIDTH-1:0] din; //If the value is assigned inside an always block, the
         $display;
         repeat (5) begin
             rd_en = 1;
-            @(posedge clk);
+            @(posedge clk);   // rd_en asserted
+            @(posedge clk);   // dout becomes valid
 
             $display("Time %t Reading %d", $time, dout);
         end
@@ -81,3 +82,4 @@ reg [DATA_WIDTH-1:0] din; //If the value is assigned inside an always block, the
     end
 
 endmodule
+
