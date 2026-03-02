@@ -92,7 +92,7 @@ The waveform verifies correct FIFO operation:
 - Full and Empty flags asserted at correct times  
 - Order of data preserved (FIFO principle)  
 
-<img width="1480" height="579" alt="Simulation" src="https://github.com/user-attachments/assets/165445a8-1778-49c7-9ee8-79d2cb335380" />
+<img width="1402" height="633" alt="Screenshot 2026-03-02 134146" src="https://github.com/user-attachments/assets/700f51c9-652c-4abb-af57-af86e3e45a99" />
 
 
 ### 📷 RTL Schematic
@@ -101,7 +101,8 @@ The synthesized RTL schematic shows:
 - Read & Write pointers  
 - Full/Empty flag logic  
 
-<img width="1466" height="666" alt="Schematics" src="https://github.com/user-attachments/assets/3916e458-a3a4-4ee5-8721-090911fed635" />
+<img width="1377" height="669" alt="Screenshot 2026-03-02 134345" src="https://github.com/user-attachments/assets/dd7e9967-6030-44ab-87f4-60fcb05c64da" />
+
 
 
 ## 💻 Requirements
