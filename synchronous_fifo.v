@@ -28,7 +28,7 @@ module synchronous_fifo #(
     input wr_en,  // Write enable
     input rd_en,  // Read enable
     input  [DATA_WIDTH-1:0] din,    // Data to write
-    output [DATA_WIDTH-1:0] dout,   // Data to read
+    output reg[DATA_WIDTH-1:0] dout,   // Data to read
     output full,   // FIFO is full
     output empty   // FIFO is empty
 );
@@ -38,7 +38,7 @@ reg [ADDR_WIDTH:0] wr_ptr = 0;        // Write pointer (one bit bigger) pointer 
 reg [ADDR_WIDTH:0] rd_ptr = 0;        // Read pointer
 assign full=(wr_ptr-rd_ptr==DEPTH); //example wr_ptr = 16, rd_ptr = 0 FIFO is full.
 assign empty=(wr_ptr==rd_ptr);//When write pointer equals read pointer ,it means nothing has been written yet or all written data has been read.
-assign dout= mem[rd_ptr[ADDR_WIDTH-1:0]];//it gives me the data stored in the FIFO at the address pointed to by the read pointer.
+
 always@(posedge clk) begin
 if(rst) begin 
 wr_ptr<=0;
@@ -50,7 +50,9 @@ mem[wr_ptr[ADDR_WIDTH-1:0]]<=din;
  always @(posedge clk) begin
     if (rst) begin
         rd_ptr <= 0;
+        dout   <= 0;
     end else if (rd_en && !empty) begin
+    dout   <= mem[rd_ptr[ADDR_WIDTH-1:0]]; //it gives me the data stored in the FIFO at the address pointed to by the read pointer.
         rd_ptr <= rd_ptr + 1;  // Move to next slot
     end
 end
